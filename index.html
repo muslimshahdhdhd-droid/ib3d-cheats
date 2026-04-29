@@ -1,71 +1,60 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IB3D Shah VIP Hub</title>
+    <title>Shah Bhai Gaming Hub</title>
     <style>
-        :root { --neon: #00ffcc; --bg: #0a0a0a; }
-        body { background: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; text-align: center; margin: 0; padding: 20px; }
-        h1, h2 { color: var(--neon); text-shadow: 0 0 10px var(--neon); text-transform: uppercase; }
-        .search-box { width: 90%; padding: 15px; border-radius: 30px; border: 2px solid var(--neon); background: #1a1a1a; color: white; margin-bottom: 20px; outline: none; }
-        .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; max-width: 900px; margin: auto; }
-        .card { background: #1a1a1a; padding: 15px; border-radius: 12px; border-bottom: 3px solid var(--neon); position: relative; }
-        .code { display: block; font-size: 1.5rem; font-weight: bold; color: var(--neon); margin-bottom: 5px; }
-        .copy-btn { background: var(--neon); color: black; border: none; padding: 5px 10px; border-radius: 5px; font-size: 0.7rem; font-weight: bold; cursor: pointer; }
-        .ai-section { margin-top: 40px; padding: 20px; background: rgba(0,255,204,0.05); border-radius: 20px; border: 1px solid var(--neon); }
-        .btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
-        button.ai-btn { padding: 12px; border-radius: 15px; border: none; background: var(--neon); color: black; font-weight: bold; cursor: pointer; }
+        :root { --main: #ff3300; --bg: #050505; --neon: #00ffcc; }
+        body { background: var(--bg); color: white; font-family: 'Arial', sans-serif; text-align: center; margin: 0; padding: 15px; }
+        h1 { color: var(--main); text-shadow: 0 0 15px var(--main); font-size: 2rem; }
+        .search-box { width: 85%; padding: 15px; border-radius: 50px; border: 2px solid var(--main); background: #111; color: white; margin-bottom: 25px; outline: none; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; max-width: 1000px; margin: auto; }
+        .card { background: #1a1a1a; padding: 20px; border-radius: 15px; border-top: 4px solid var(--main); transition: 0.3s; }
+        .card:hover { transform: scale(1.05); border-color: var(--neon); }
+        .code-text { font-size: 1.8rem; font-weight: bold; color: var(--neon); display: block; }
+        .copy-btn { margin-top: 10px; background: var(--main); color: white; border: none; padding: 8px 15px; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        .ai-hub { margin-top: 50px; border: 2px dashed var(--neon); padding: 20px; border-radius: 25px; background: #0c0c0c; }
+        .ai-btn { background: var(--neon); color: black; padding: 12px; border: none; border-radius: 10px; font-weight: bold; margin: 5px; cursor: pointer; }
     </style>
 </head>
 <body>
 
-    <h1>SHAH BHAI GAMING 🏎️</h1>
-    <input type="text" id="searchInput" class="search-box" placeholder="Search Cheat (Zombie, Dino, Car)..." onkeyup="searchCheat()">
+    <h1>SHAH BHAI GAMING 🚀</h1>
+    <input type="text" id="find" class="search-box" placeholder="Search Code (Monster, Flying, etc)..." onkeyup="filter()">
 
-    <div class="container" id="cheatContainer">
-        <div class="card"><span class="code">2030</span>Zombie Mode <br><button class="copy-btn" onclick="copyCode('2030')">COPY</button></div>
-        <div class="card"><span class="code">5050</span>Dinosaur <br><button class="copy-btn" onclick="copyCode('5050')">COPY</button></div>
-        <div class="card"><span class="code">9090</span>Thar <br><button class="copy-btn" onclick="copyCode('9090')">COPY</button></div>
-        <div class="card"><span class="code">4040</span>Tank <br><button class="copy-btn" onclick="copyCode('4040')">COPY</button></div>
-        <div class="card"><span class="code">0000</span>Dirt Bike <br><button class="copy-btn" onclick="copyCode('0000')">COPY</button></div>
-        <div class="card"><span class="code">8000</span>Helicopter <br><button class="copy-btn" onclick="copyCode('8000')">COPY</button></div>
+    <div class="grid" id="box">
+        <div class="card"><span class="code-text">800</span>Flying Car <br><button class="copy-btn" onclick="copy('800')">COPY</button></div>
+        <div class="card"><span class="code-text">0900</span>Monster Truck <br><button class="copy-btn" onclick="copy('0900')">COPY</button></div>
+        <div class="card"><span class="code-text">2030</span>Zombie Mode <br><button class="copy-btn" onclick="copy('2030')">COPY</button></div>
+        <div class="card"><span class="code-text">5050</span>Dinosaur <br><button class="copy-btn" onclick="copy('5050')">COPY</button></div>
+        <div class="card"><span class="code-text">9090</span>Thar <br><button class="copy-btn" onclick="copy('9090')">COPY</button></div>
+        <div class="card"><span class="code-text">1111</span>Cycle <br><button class="copy-btn" onclick="copy('1111')">COPY</button></div>
     </div>
 
-    <div class="ai-section">
-        <h2>AI Content Studio 🤖</h2>
-        <input type="text" id="aiPrompt" style="width:80%; padding:10px; border-radius:10px;" placeholder="Topic likhen...">
-        <div class="btn-grid">
-            <button class="ai-btn" onclick="generateAI(1)">Script</button>
-            <button class="ai-btn" onclick="generateAI(5)">Viral Tags</button>
-        </div>
-        <div id="aiResult" style="margin-top:15px; color:var(--neon);"></div>
+    <div class="ai-hub">
+        <h2>Shah AI Content Maker 🤖</h2>
+        <input type="text" id="topic" style="width:70%; padding:10px;" placeholder="Video topic likhen...">
+        <br><br>
+        <button class="ai-btn" onclick="runAI(1)">Script</button>
+        <button class="ai-btn" onclick="runAI(5)" style="background:gold;">Viral Tags</button>
+        <div id="out" style="margin-top:20px; color:var(--neon); font-weight:bold;"></div>
     </div>
 
     <script>
-        function copyCode(text) {
-            navigator.clipboard.writeText(text);
-            alert("Code Copy Ho Gaya: " + text);
+        function copy(t) { navigator.clipboard.writeText(t); alert("Copied: " + t); }
+        function filter() {
+            let val = document.getElementById('find').value.toLowerCase();
+            let items = document.getElementsByClassName('card');
+            for (let i of items) { i.style.display = i.innerText.toLowerCase().includes(val) ? "" : "none"; }
         }
-        function searchCheat() {
-            let input = document.getElementById('searchInput').value.toLowerCase();
-            let cards = document.getElementsByClassName('card');
-            for (let i = 0; i < cards.length; i++) {
-                let text = cards[i].innerText.toLowerCase();
-                cards[i].style.display = text.includes(input) ? "" : "none";
-            }
-        }
-        function generateAI(option) {
-            let topic = document.getElementById('aiPrompt').value;
-            let resultDiv = document.getElementById('aiResult');
-            if(option === 1) resultDiv.innerHTML = "<b>📜 Script:</b> Salam doston! Aaj hum " + topic + " try karenge!";
-            if(option === 5) resultDiv.innerHTML = "<b>🔥 Tags:</b> #ShahBhai #IB3D #Gaming #Viral";
+        function runAI(opt) {
+            let t = document.getElementById('topic').value;
+            let res = document.getElementById('out');
+            if(!t) { alert("Pehle topic likhen!"); return; }
+            if(opt === 1) res.innerHTML = "📜 Script: Aaj hum " + t + " ka khatarnak stunt karenge!";
+            if(opt === 5) res.innerHTML = "🔥 Tags: #ShahBhai #IB3D #FlyingCar #Gaming #SanglaHill";
         }
     </script>
 </body>
-</html>    
-   
-       
-
-    
+</html>
